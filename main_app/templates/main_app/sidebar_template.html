@@ -5,7 +5,7 @@
     <a href="{% url 'admin_home' %}" class="brand-link">
         <img src="{% static 'dist/img/cmsl.png' %} " alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" >
-        <span class="brand-text font-weight-light">Admin Panel</span>
+        <span class="brand-text font-weight-light">Admin Paneli</span>
     </a>
 
     <!-- Sidebar -->
@@ -29,7 +29,7 @@
                     <a href="{{admin_home}}" class="nav-link {% if admin_home == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Home
+                            Bosh sahifa
 
                         </p>
                     </a>
@@ -40,7 +40,7 @@
                         class="nav-link {% if admin_view_profile == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>
-                            Update Profile
+                            Profil sozlash
 
                         </p>
                     </a>
@@ -52,7 +52,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bookmark"></i>
                         <p>
-                            Course
+                            Sinflar
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -63,7 +63,7 @@
                                 class="nav-link  {% if add_course == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Add Course
+                                    Sinf qo'shish
 
                                 </p>
                             </a>
@@ -75,7 +75,7 @@
                                 class="nav-link  {% if edit_course == request.path or manage_course == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Manage Course
+                                    Sinfni sozlash
 
                                 </p>
                             </a>
@@ -90,7 +90,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Subject
+                            Fanlar
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -101,7 +101,7 @@
                                 class="nav-link  {% if add_subject == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Add Subject
+                                    Fan qo'shish
 
                                 </p>
                             </a>
@@ -113,7 +113,7 @@
                                 class="nav-link  {% if edit_subject == request.path or manage_subject == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Manage Subject
+                                    Fanni sozlash
 
                                 </p>
                             </a>
@@ -130,7 +130,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-clock"></i>
                         <p>
-                            Session
+                            Chorak
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -142,7 +142,7 @@
                                 class="nav-link  {% if add_session == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Add Session
+                                    Chorak qo'shish
 
                                 </p>
                             </a>
@@ -154,7 +154,7 @@
                                 class="nav-link  {% if edit_session == request.path or manage_session == request.path %} active {% endif %}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Manage Session
+                                    Chorakni sozlash
 
                                 </p>
                             </a>
@@ -169,7 +169,7 @@
                     <a href="{{add_staff}}" class="nav-link {% if add_staff == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>
-                            Add Staff
+                            Xodim qo'shish
 
                         </p>
                     </a>
@@ -182,7 +182,7 @@
                         class="nav-link {% if manage_staff == request.path or request.path == edit_staff %} active {% endif %}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Manage Staff
+                            Xodimni tahrirlash
 
                         </p>
                     </a>
@@ -192,7 +192,7 @@
                     <a href="{{add_student}}" class="nav-link  {% if add_student == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>
-                            Add Student
+                            O'quvchi qo'shish
 
                         </p>
                     </a>
@@ -205,7 +205,7 @@
                         class="nav-link  {% if edit_student == request.path or manage_student == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Manage Student
+                            O'quvchini tahrirlash
 
                         </p>
                     </a>
@@ -217,7 +217,7 @@
                         class="nav-link {% if admin_notify_staff == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-bullhorn"></i>
                         <p>
-                            Notify Staff
+                            Xodimga bildirishnoma
 
                         </p>
                     </a>
@@ -228,7 +228,7 @@
                         class="nav-link {% if admin_notify_student == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-bullhorn"></i>
                         <p>
-                            Notify Student
+                            O'quvchiga bildirishnoma
 
                         </p>
                     </a>
@@ -242,7 +242,7 @@
                         class="nav-link  {% if admin_view_attendance == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
-                            View Attendance
+                            Davomatni ko'rish
                         </p>
                     </a>
                 </li>
@@ -253,7 +253,7 @@
                         class="nav-link  {% if student_feedback_message == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-comment-alt"></i>
                         <p>
-                            Student Feedback
+                            O'quvchi izohi
 
                         </p>
                     </a>
@@ -265,7 +265,7 @@
                         class="nav-link   {% if staff_feedback_message == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-comment"></i>
                         <p>
-                            Staff Feedback
+                            Xodim izohi
 
                         </p>
                     </a>
@@ -277,7 +277,7 @@
                         class="nav-link  {% if view_staff_leave == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-check-double"></i>
                         <p>
-                            Staff Leave
+                            Xodimni ketishi
 
                         </p>
                     </a>
@@ -289,7 +289,7 @@
                         class="nav-link  {% if view_student_leave == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-check-double"></i>
                         <p>
-                            Student Leave
+                            O'quvchini ketishi
 
                         </p>
                     </a>
@@ -308,7 +308,7 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ request.user.profile_pic}}" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{ request.user.profile_pic}}" class="img-circle elevation-2" alt="Rasm">
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">{{ user}}</a>
@@ -326,7 +326,7 @@
                                     class="nav-link {% if staff_home == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
-                                        Home
+                                        Bosh sahifa
 
                                     </p>
                                 </a>
@@ -338,7 +338,7 @@
                                     class="nav-link {% if staff_view_profile == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-address-card"></i>
                                     <p>
-                                        Update Profile
+                                        Profil sozlamasi
 
                                     </p>
                                 </a>
@@ -350,7 +350,7 @@
                                     class="nav-link {% if staff_add_result == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-poll"></i>
                                     <p>
-                                        Add Result
+                                        Natija qo'shish
 
                                     </p>
                                 </a>
@@ -361,7 +361,7 @@
                                     class="nav-link {% if edit_student_result == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
-                                        Edit Result
+                                        Natijani tahrirlash
 
                                     </p>
                                 </a>
@@ -372,7 +372,7 @@
                                     class="nav-link {% if staff_take_attendance == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-calendar-alt"></i>
                                     <p>
-                                        Take Attendance
+                                        Davomatni olish
 
                                     </p>
                                 </a>
@@ -383,7 +383,7 @@
                                     class="nav-link {% if staff_update_attendance == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
-                                        View/Update Attendance
+                                        Davomatni ko'rish/sozlash
 
                                     </p>
                                 </a>
@@ -394,7 +394,7 @@
                                     class="nav-link {% if staff_view_notification == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-bell"></i>
                                     <p>
-                                        View Notifications
+                                        Bildirishnomalarni ko'rish
 
                                     </p>
                                 </a>
@@ -406,7 +406,7 @@
                                     class="nav-link {% if staff_apply_leave == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-check"></i>
                                     <p>
-                                        Apply For Leave
+                                        Ketishga ariza
 
                                     </p>
                                 </a>
@@ -418,7 +418,7 @@
                                     class="nav-link {% if staff_feedback == request.path %} active {% endif %}">
                                     <i class="nav-icon fas fa-comment-alt"></i>
                                     <p>
-                                        Feedback
+                                        Izoh
 
                                     </p>
                                 </a>
@@ -457,7 +457,7 @@
                                                 class="nav-link {% if student_home == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-home"></i>
                                                 <p>
-                                                    Home
+                                                    Bosh sahifa
 
                                                 </p>
                                             </a>
@@ -469,7 +469,7 @@
                                                 class="nav-link {% if student_view_profile == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-address-card"></i>
                                                 <p>
-                                                    Update Profile
+                                                    Profilni sozlash
 
                                                 </p>
                                             </a>
@@ -480,7 +480,7 @@
                                             <a href="{{student_view_attendance}}"
                                                 class="nav-link {% if student_view_attendance == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-calendar-alt"></i>
-                                                <p>View Attendance</p>
+                                                <p>Davomatni ko'rish</p>
                                             </a>
                                         </li>
 
@@ -490,7 +490,7 @@
                                                 class="nav-link {% if student_view_notification == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-bell"></i>
                                                 <p>
-                                                    View Notifications
+                                                    Bildirishnomalarni ko'rish
 
                                                 </p>
                                             </a>
@@ -502,7 +502,7 @@
                                                 class="nav-link {% if student_apply_leave == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-check"></i>
                                                 <p>
-                                                    Apply For Leave
+                                                    Ketish uchun ariza
 
                                                 </p>
                                             </a>
@@ -514,7 +514,7 @@
                                                 class="nav-link {% if student_feedback == request.path %} active {% endif %}">
                                                 <i class="nav-icon fas fa-comment-alt"></i>
                                                 <p>
-                                                    Feedback
+                                                    Izoh
 
                                                 </p>
                                             </a>
@@ -530,7 +530,7 @@
                                                 class="nav-link">
                                                 <i class="nav-icon fas fa-power-off"></i>
                                                 <p>
-                                                    Logout
+                                                    Chiqish
                                                 </p>
                                             </a>
                                         </li>
