@@ -68,7 +68,7 @@ def admin_home(request):
         student_name_list.append(student.admin.first_name)
 
     context = {
-        'page_title': "Administrative Dashboard",
+        'page_title': "Adminstrator Oynasi",
         'total_students': total_students,
         'total_staff': total_staff,
         'total_course': total_course,
@@ -88,7 +88,7 @@ def admin_home(request):
 
 def add_staff(request):
     form = StaffForm(request.POST or None, request.FILES or None)
-    context = {'form': form, 'page_title': 'Add Staff'}
+    context = {'form': form, 'page_title': 'Xodim qoshish'}
     if request.method == 'POST':
         if form.is_valid():
             first_name = form.cleaned_data.get('first_name')
@@ -109,20 +109,20 @@ def add_staff(request):
                 user.address = address
                 user.staff.course = course
                 user.save()
-                messages.success(request, "Successfully Added")
+                messages.success(request, "Muvaffaqiyatli qo'shildi")
                 return redirect(reverse('add_staff'))
 
             except Exception as e:
-                messages.error(request, "Could Not Add " + str(e))
+                messages.error(request, "Qo'shib bo'lmaydi " + str(e))
         else:
-            messages.error(request, "Please fulfil all requirements")
+            messages.error(request, "Iltimos to'ldiring")
 
     return render(request, 'hod_template/add_staff_template.html', context)
 
 
 def add_student(request):
     student_form = StudentForm(request.POST or None, request.FILES or None)
-    context = {'form': student_form, 'page_title': 'Add Student'}
+    context = {'form': student_form, 'page_title': 'Ouvchi qoshish'}
     if request.method == 'POST':
         if student_form.is_valid():
             first_name = student_form.cleaned_data.get('first_name')
@@ -392,7 +392,7 @@ def edit_subject(request, subject_id):
 
 def add_session(request):
     form = SessionForm(request.POST or None)
-    context = {'form': form, 'page_title': 'Add Session'}
+    context = {'form': form, 'page_title': 'Chorak qoshish'}
     if request.method == 'POST':
         if form.is_valid():
             try:
@@ -408,7 +408,7 @@ def add_session(request):
 
 def manage_session(request):
     sessions = Session.objects.all()
-    context = {'sessions': sessions, 'page_title': 'Manage Sessions'}
+    context = {'sessions': sessions, 'page_title': 'Choraklarni sozlash'}
     return render(request, "hod_template/manage_session.html", context)
 
 
@@ -416,7 +416,7 @@ def edit_session(request, session_id):
     instance = get_object_or_404(Session, id=session_id)
     form = SessionForm(request.POST or None, instance=instance)
     context = {'form': form, 'session_id': session_id,
-               'page_title': 'Edit Session'}
+               'page_title': 'Chorakni sozlash'}
     if request.method == 'POST':
         if form.is_valid():
             try:
@@ -453,7 +453,7 @@ def student_feedback_message(request):
         feedbacks = FeedbackStudent.objects.all()
         context = {
             'feedbacks': feedbacks,
-            'page_title': 'Student Feedback Messages'
+            'page_title': 'Oquvchidan xabar'
         }
         return render(request, 'hod_template/student_feedback_template.html', context)
     else:
@@ -474,7 +474,7 @@ def staff_feedback_message(request):
         feedbacks = FeedbackStaff.objects.all()
         context = {
             'feedbacks': feedbacks,
-            'page_title': 'Staff Feedback Messages'
+            'page_title': 'Xodimdan xabar'
         }
         return render(request, 'hod_template/staff_feedback_template.html', context)
     else:
@@ -495,7 +495,7 @@ def view_staff_leave(request):
         allLeave = LeaveReportStaff.objects.all()
         context = {
             'allLeave': allLeave,
-            'page_title': 'Leave Applications From Staff'
+            'page_title': 'Arizalar xodimlardan'
         }
         return render(request, "hod_template/staff_leave_view.html", context)
     else:
@@ -520,7 +520,7 @@ def view_student_leave(request):
         allLeave = LeaveReportStudent.objects.all()
         context = {
             'allLeave': allLeave,
-            'page_title': 'Leave Applications From Students'
+            'page_title': 'Arizalar'
         }
         return render(request, "hod_template/student_leave_view.html", context)
     else:
@@ -545,7 +545,7 @@ def admin_view_attendance(request):
     context = {
         'subjects': subjects,
         'sessions': sessions,
-        'page_title': 'View Attendance'
+        'page_title': 'Davomatni korish'
     }
 
     return render(request, "hod_template/admin_view_attendance.html", context)
@@ -580,7 +580,7 @@ def admin_view_profile(request):
     form = AdminForm(request.POST or None, request.FILES or None,
                      instance=admin)
     context = {'form': form,
-               'page_title': 'View/Edit Profile'
+               'page_title': 'Profilni sozlash'
                }
     if request.method == 'POST':
         try:
@@ -613,7 +613,7 @@ def admin_view_profile(request):
 def admin_notify_staff(request):
     staff = CustomUser.objects.filter(user_type=2)
     context = {
-        'page_title': "Send Notifications To Staff",
+        'page_title': "Xodimga xabar",
         'allStaff': staff
     }
     return render(request, "hod_template/staff_notification.html", context)
@@ -622,7 +622,7 @@ def admin_notify_staff(request):
 def admin_notify_student(request):
     student = CustomUser.objects.filter(user_type=3)
     context = {
-        'page_title': "Send Notifications To Students",
+        'page_title': "O'quvchiga xabar",
         'students': student
     }
     return render(request, "hod_template/student_notification.html", context)

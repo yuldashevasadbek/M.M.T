@@ -55,15 +55,15 @@
             }).done(function(response){
                 if (response == "True"){
                     $(".email_error").remove()
-                    $("<span class='invalid email_error'>Email Address Already Exist</span>").insertAfter("#id_email");
+                    $("<span class='invalid email_error'>Allaqachon mavjud</span>").insertAfter("#id_email");
                 }
                 else{
                     $(".email_error").remove()
 
-                    $("<span class='valid email_error'>Email Address Available</span>").insertAfter("#id_email");
+                    $("<span class='valid email_error'>Mavjud</span>").insertAfter("#id_email");
                 }
             }).fail(function(response){
-                $("<span class='alert alert-warning'>Server Could Not Process This</span>").insertAfter("#id_email");
+                $("<span class='alert alert-warning'>Xato</span>").insertAfter("#id_email");
             })
         }
         })
