@@ -36,7 +36,7 @@ def doLogin(request, **kwargs):
             else:
                 return redirect(reverse("student_home"))
         else:
-            messages.error(request, "Invalid details")
+            messages.error(request, "Pochta yoki Parol xato!!!")
             return redirect("/")
 
 

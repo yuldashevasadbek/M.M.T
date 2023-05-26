@@ -31,8 +31,8 @@ class CustomUserManager(UserManager):
 
 
 class Session(models.Model):
-    start_year = models.DateField()
-    end_year = models.DateField()
+    start_year = models.DateField(verbose_name = "o'quv yilini boshlanishi")
+    end_year = models.DateField(verbose_name = "o'quv yilini tugashi")
 
     def __str__(self):
         return "From " + str(self.start_year) + " to " + str(self.end_year)
@@ -65,7 +65,7 @@ class Admin(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120,verbose_name = "Sinf")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -75,15 +75,15 @@ class Course(models.Model):
 
 class Student(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, null=True, blank=False)
-    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING, null=True)
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, null=True, blank=False, verbose_name = "sinifi")
+    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING, null=True,verbose_name = "Choragi")
 
     def __str__(self):
         return self.admin.last_name + ", " + self.admin.first_name
 
 
 class Staff(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, null=True, blank=False)
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, null=True, blank=False, verbose_name = "sinfi")
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -91,9 +91,9 @@ class Staff(models.Model):
 
 
 class Subject(models.Model):
-    name = models.CharField(max_length=120)
-    staff = models.ForeignKey(Staff,on_delete=models.CASCADE,)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    name = models.CharField(max_length=120, verbose_name = "Fan nomi")
+    staff = models.ForeignKey(Staff,on_delete=models.CASCADE,verbose_name = "O'qituvchi")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name = "Sinifi")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -102,8 +102,8 @@ class Subject(models.Model):
 
 
 class Attendance(models.Model):
-    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING)
-    subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
+    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING,verbose_name = "Choragi")
+    subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING,verbose_name = "Fan")
     date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -119,17 +119,17 @@ class AttendanceReport(models.Model):
 
 class LeaveReportStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    date = models.CharField(max_length=60)
-    message = models.TextField()
+    date = models.CharField(max_length=60,verbose_name = "Sana")
+    message = models.TextField(verbose_name = "Xabar")
     status = models.SmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
 class LeaveReportStaff(models.Model):
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    date = models.CharField(max_length=60)
-    message = models.TextField()
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE,)
+    date = models.CharField(max_length=60,verbose_name = "Sana")
+    message = models.TextField(verbose_name = "Xabar")
     status = models.SmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -137,7 +137,7 @@ class LeaveReportStaff(models.Model):
 
 class FeedbackStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    feedback = models.TextField()
+    feedback = models.TextField(verbose_name = "Fikr-mulohaza")
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -145,7 +145,7 @@ class FeedbackStudent(models.Model):
 
 class FeedbackStaff(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    feedback = models.TextField()
+    feedback = models.TextField(verbose_name = "Fikr-mulohaza")
     reply = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -166,12 +166,12 @@ class NotificationStudent(models.Model):
 
 
 class StudentResult(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE,verbose_name = "O'quvchi")
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE,verbose_name = "Fan")
     test = models.FloatField(default=0)
     exam = models.FloatField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True,)
+    updated_at = models.DateTimeField(auto_now=True,)
 
 
 @receiver(post_save, sender=CustomUser)

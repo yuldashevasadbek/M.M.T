@@ -14,7 +14,7 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    <div class="table card-body">
+                    <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>#</th>
@@ -79,10 +79,10 @@
         
         <div class = "modal-footer">
             <button type = "button" class = "btn btn-danger" data-dismiss = "modal">
-                Close
+                Yopish
             </button>
             
-            <button id="reply_btn" class="btn btn-success btn-block">Reply</button>
+            <button id="reply_btn" class="btn btn-success btn-block">Javob berish</button>
          
          </div>
          
@@ -116,13 +116,13 @@
                     }
                 }).done(function(response){
                     if (response == "True"){
-                        alert("Reply Sent")
+                        alert("Javob yuborildi")
                         location.reload()
                     }else{
-                        alert("Reply Could Not Be Sent")
+                        alert("Javob yuborilmadi")
                     }
                 }).fail(function(response){
-                    alert("Error Occured. ")
+                    alert("Xatolik yuz berdi. ")
                 })
           })
       })

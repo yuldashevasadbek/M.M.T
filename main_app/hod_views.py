@@ -88,7 +88,7 @@ def admin_home(request):
 
 def add_staff(request):
     form = StaffForm(request.POST or None, request.FILES or None)
-    context = {'form': form, 'page_title': 'Xodim qoshish'}
+    context = {'form': form, 'page_title': "Xodim qo'shish"}
     if request.method == 'POST':
         if form.is_valid():
             first_name = form.cleaned_data.get('first_name')
@@ -113,7 +113,7 @@ def add_staff(request):
                 return redirect(reverse('add_staff'))
 
             except Exception as e:
-                messages.error(request, "Qo'shib bo'lmaydi " + str(e))
+                messages.error(request, "Qo'shib bo'lmaydi: " + str(e))
         else:
             messages.error(request, "Iltimos to'ldiring")
 
@@ -122,7 +122,7 @@ def add_staff(request):
 
 def add_student(request):
     student_form = StudentForm(request.POST or None, request.FILES or None)
-    context = {'form': student_form, 'page_title': 'Ouvchi qoshish'}
+    context = {'form': student_form, 'page_title': "O'quvchi qo'shish"}
     if request.method == 'POST':
         if student_form.is_valid():
             first_name = student_form.cleaned_data.get('first_name')
@@ -145,12 +145,12 @@ def add_student(request):
                 user.student.session = session
                 user.student.course = course
                 user.save()
-                messages.success(request, "Successfully Added")
+                messages.success(request, "Muvaffaqiyatli qo'shildi")
                 return redirect(reverse('add_student'))
             except Exception as e:
-                messages.error(request, "Could Not Add: " + str(e))
+                messages.error(request, "Qo'shib bo'lmaydi: " + str(e))
         else:
-            messages.error(request, "Could Not Add: ")
+            messages.error(request, "Qo'shib bo'lmaydi: ")
     return render(request, 'hod_template/add_student_template.html', context)
 
 
@@ -158,7 +158,7 @@ def add_course(request):
     form = CourseForm(request.POST or None)
     context = {
         'form': form,
-        'page_title': 'Add Course'
+        'page_title': "Sinf qo'shish"
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -167,12 +167,12 @@ def add_course(request):
                 course = Course()
                 course.name = name
                 course.save()
-                messages.success(request, "Successfully Added")
+                messages.success(request, "Muvaffaqiyatli qo'shildi")
                 return redirect(reverse('add_course'))
             except:
-                messages.error(request, "Could Not Add")
+                messages.error(request, "Qo'shib bo'lmaydi")
         else:
-            messages.error(request, "Could Not Add")
+            messages.error(request, "Qo'shib bo'lmaydi")
     return render(request, 'hod_template/add_course_template.html', context)
 
 
@@ -180,7 +180,7 @@ def add_subject(request):
     form = SubjectForm(request.POST or None)
     context = {
         'form': form,
-        'page_title': 'Add Subject'
+        'page_title': "Fan qo'shish"
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -193,13 +193,13 @@ def add_subject(request):
                 subject.staff = staff
                 subject.course = course
                 subject.save()
-                messages.success(request, "Successfully Added")
+                messages.success(request, "Muvaffaqiyatli qo'shildi")
                 return redirect(reverse('add_subject'))
 
             except Exception as e:
-                messages.error(request, "Could Not Add " + str(e))
+                messages.error(request, "Qo'shib bo'lmaydi " + str(e))
         else:
-            messages.error(request, "Fill Form Properly")
+            messages.error(request, "Iltimos, formani to'g'ri to'ldiring!")
 
     return render(request, 'hod_template/add_subject_template.html', context)
 
@@ -208,7 +208,7 @@ def manage_staff(request):
     allStaff = CustomUser.objects.filter(user_type=2)
     context = {
         'allStaff': allStaff,
-        'page_title': 'Manage Staff'
+        'page_title': 'Xodimlarni boshqarish'
     }
     return render(request, "hod_template/manage_staff.html", context)
 
@@ -217,7 +217,7 @@ def manage_student(request):
     students = CustomUser.objects.filter(user_type=3)
     context = {
         'students': students,
-        'page_title': 'Manage Students'
+        'page_title': "O'quvchilarni boshqarish"
     }
     return render(request, "hod_template/manage_student.html", context)
 
@@ -226,16 +226,18 @@ def manage_course(request):
     courses = Course.objects.all()
     context = {
         'courses': courses,
-        'page_title': 'Manage Courses'
+        'page_title': 'Sinflarni Boshqarish'
     }
     return render(request, "hod_template/manage_course.html", context)
 
+def calendar(request):
+    return render(request,"calendar.html")
 
 def manage_subject(request):
     subjects = Subject.objects.all()
     context = {
         'subjects': subjects,
-        'page_title': 'Manage Subjects'
+        'page_title': 'Mavzularni Boshqarish'
     }
     return render(request, "hod_template/manage_subject.html", context)
 
@@ -246,7 +248,7 @@ def edit_staff(request, staff_id):
     context = {
         'form': form,
         'staff_id': staff_id,
-        'page_title': 'Edit Staff'
+        'page_title': 'Xodimlarni tahrirlash'
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -277,12 +279,12 @@ def edit_staff(request, staff_id):
                 staff.course = course
                 user.save()
                 staff.save()
-                messages.success(request, "Successfully Updated")
+                messages.success(request, "Muofaqiyatli yangilandi")
                 return redirect(reverse('edit_staff', args=[staff_id]))
             except Exception as e:
-                messages.error(request, "Could Not Update " + str(e))
+                messages.error(request, "Yangilab bo‘lmadi " + str(e))
         else:
-            messages.error(request, "Please fil form properly")
+            messages.error(request, "Iltimos, formani to'g'ri to'ldiring!")
     else:
         user = CustomUser.objects.get(id=staff_id)
         staff = Staff.objects.get(id=user.id)
@@ -328,12 +330,12 @@ def edit_student(request, student_id):
                 student.course = course
                 user.save()
                 student.save()
-                messages.success(request, "Successfully Updated")
+                messages.success(request, "Muofaqiyatli yangilandi")
                 return redirect(reverse('edit_student', args=[student_id]))
             except Exception as e:
-                messages.error(request, "Could Not Update " + str(e))
+                messages.error(request, "Yangilab bo'lmadi " + str(e))
         else:
-            messages.error(request, "Please Fill Form Properly!")
+            messages.error(request, "Iltimos, formani to'g'ri to'ldiring!")
     else:
         return render(request, "hod_template/edit_student_template.html", context)
 
@@ -353,11 +355,11 @@ def edit_course(request, course_id):
                 course = Course.objects.get(id=course_id)
                 course.name = name
                 course.save()
-                messages.success(request, "Successfully Updated")
+                messages.success(request, "Muofaqiyatli yangilandi")
             except:
-                messages.error(request, "Could Not Update")
+                messages.error(request, "Yangilab bo‘lmadi")
         else:
-            messages.error(request, "Could Not Update")
+            messages.error(request, "Yangilab bo‘lmadi")
 
     return render(request, 'hod_template/edit_course_template.html', context)
 
@@ -381,12 +383,12 @@ def edit_subject(request, subject_id):
                 subject.staff = staff
                 subject.course = course
                 subject.save()
-                messages.success(request, "Successfully Updated")
+                messages.success(request, "Muofaqiyatli yangilandi")
                 return redirect(reverse('edit_subject', args=[subject_id]))
             except Exception as e:
-                messages.error(request, "Could Not Add " + str(e))
+                messages.error(request, "Yangilab bo‘lmadi " + str(e))
         else:
-            messages.error(request, "Fill Form Properly")
+            messages.error(request, "Formani to'g'ri to'ldiring!")
     return render(request, 'hod_template/edit_subject_template.html', context)
 
 
@@ -397,12 +399,12 @@ def add_session(request):
         if form.is_valid():
             try:
                 form.save()
-                messages.success(request, "Session Created")
+                messages.success(request, "Chorak qushildi")
                 return redirect(reverse('add_session'))
             except Exception as e:
-                messages.error(request, 'Could Not Add ' + str(e))
+                messages.error(request, 'Qo‘shib bo‘lmadi ' + str(e))
         else:
-            messages.error(request, 'Fill Form Properly ')
+            messages.error(request, "Formani to'g'ri to'ldiring!")
     return render(request, "hod_template/add_session_template.html", context)
 
 
@@ -421,14 +423,14 @@ def edit_session(request, session_id):
         if form.is_valid():
             try:
                 form.save()
-                messages.success(request, "Session Updated")
+                messages.success(request, "Chorak yangilandi")
                 return redirect(reverse('edit_session', args=[session_id]))
             except Exception as e:
                 messages.error(
-                    request, "Session Could Not Be Updated " + str(e))
+                    request, "Chorakni yangilab bo‘lmadi " + str(e))
                 return render(request, "hod_template/edit_session_template.html", context)
         else:
-            messages.error(request, "Invalid Form Submitted ")
+            messages.error(request, "Yaroqsiz forma topshirildi ")
             return render(request, "hod_template/edit_session_template.html", context)
 
     else:
@@ -453,7 +455,7 @@ def student_feedback_message(request):
         feedbacks = FeedbackStudent.objects.all()
         context = {
             'feedbacks': feedbacks,
-            'page_title': 'Oquvchidan xabar'
+            'page_title': "O'quvchidan xabar"
         }
         return render(request, 'hod_template/student_feedback_template.html', context)
     else:
@@ -545,7 +547,7 @@ def admin_view_attendance(request):
     context = {
         'subjects': subjects,
         'sessions': sessions,
-        'page_title': 'Davomatni korish'
+        'page_title': "Davomatni ko'rish"
     }
 
     return render(request, "hod_template/admin_view_attendance.html", context)
@@ -600,13 +602,13 @@ def admin_view_profile(request):
                 custom_user.first_name = first_name
                 custom_user.last_name = last_name
                 custom_user.save()
-                messages.success(request, "Profile Updated!")
+                messages.success(request, "Profile Yangilandi")
                 return redirect(reverse('admin_view_profile'))
             else:
-                messages.error(request, "Invalid Data Provided")
+                messages.error(request, "Yaroqsiz maʼlumotlar taqdim etilgan")
         except Exception as e:
             messages.error(
-                request, "Error Occured While Updating Profile " + str(e))
+                request, "Profilni yangilashda xatolik yuz berdi " + str(e))
     return render(request, "hod_template/admin_view_profile.html", context)
 
 
@@ -637,7 +639,7 @@ def send_student_notification(request):
         url = "https://fcm.googleapis.com/fcm/send"
         body = {
             'notification': {
-                'title': "Student Management System",
+                'title': "O'quvchilarni boshqarish tizimi",
                 'body': message,
                 'click_action': reverse('student_view_notification'),
                 'icon': static('dist/img/AdminLTELogo.png')
@@ -685,14 +687,14 @@ def send_staff_notification(request):
 def delete_staff(request, staff_id):
     staff = get_object_or_404(CustomUser, staff__id=staff_id)
     staff.delete()
-    messages.success(request, "Staff deleted successfully!")
+    messages.success(request, "Xodim muoffaqiyatli o'chirildi!")
     return redirect(reverse('manage_staff'))
 
 
 def delete_student(request, student_id):
     student = get_object_or_404(CustomUser, student__id=student_id)
     student.delete()
-    messages.success(request, "Student deleted successfully!")
+    messages.success(request, "O'quvchi muoffaqiyatli o'chirildi!")
     return redirect(reverse('manage_student'))
 
 
@@ -700,17 +702,17 @@ def delete_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     try:
         course.delete()
-        messages.success(request, "Course deleted successfully!")
+        messages.success(request, "Sinf muoffaqiyatli o'chirildi!")
     except Exception:
         messages.error(
-            request, "Sorry, some students are assigned to this course already. Kindly change the affected student course and try again")
+            request, "Kechirasiz,  o'quvchilar allaqachon bu sinfda o'qiyabdi. Iltimos, bu o'quvchilarni  o'zgartiring va qayta urinib ko'ring")
     return redirect(reverse('manage_course'))
 
 
 def delete_subject(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
     subject.delete()
-    messages.success(request, "Subject deleted successfully!")
+    messages.success(request, "Mavzu muoffaqiyatli o'chirildi!")
     return redirect(reverse('manage_subject'))
 
 
@@ -718,8 +720,8 @@ def delete_session(request, session_id):
     session = get_object_or_404(Session, id=session_id)
     try:
         session.delete()
-        messages.success(request, "Session deleted successfully!")
+        messages.success(request, "Chorak muoffaqiyatli o'chirildi!!")
     except Exception:
         messages.error(
-            request, "There are students assigned to this session. Please move them to another session.")
+            request, "Ushbu mashg'ulotga o'quvchilar tayinlangan. Iltimos, ularni boshqa corakga o'tkazing.")
     return redirect(reverse('manage_session'))

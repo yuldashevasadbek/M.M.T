@@ -14,19 +14,19 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Apply For Leave"%}
+                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Ta'tilga ariza berish"%}
                 </div>
                 <!-- /.card -->
 <div class="card card-default">
-    <div class="card-header"><h3 class="card-title"><b>Leave History</b></h3>
-   <div class="table">
+    <div class="card-header"><h3 class="card-title"><b>Ta'til Tarixi</b></h3>
+   <div class="table-responsive">
 
        <table class="table table-bordered table-hover">
            <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Date</th>
-                <th>Message</th>
+                <th>Sana</th>
+                <th>Xabar</th>
              <th>Status</th>
          </tr>
            </thead>
@@ -38,12 +38,12 @@
               <td>
                   
                   {% if leave.status == 0 %}
-                  <span class="badge badge-warning">Pending</span>
+                  <span class="badge badge-warning">Kutilmoqda</span>
                   {% elif leave.status == 1 %}
-                  <span class="badge badge-success">Accepted</span>
+                  <span class="badge badge-success">Qabul qilindi</span>
                   
                     {% else %}
-                    <span class="badge badge-danger">Rejected</span>
+                    <span class="badge badge-danger">Rad etildi</span>
                     
                     {% endif %}
                     

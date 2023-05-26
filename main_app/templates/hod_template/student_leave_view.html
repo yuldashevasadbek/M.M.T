@@ -14,16 +14,16 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    <div class="table card-body">
+                    <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>#</th>
-                                <th>Student</th>
-                                <th>Course</th>
-                                <th>Message</th>
-                                <th>Leave Date</th>
-                                <th>Submitted On</th>
-                                <th>Action</th>
+                                <th>O'quvchi</th>
+                                <th>Sinf</th>
+                                <th>Xabar</th>
+                                <th>Ketish sanasi</th>
+                                <th>Qushilgan sanasi</th>
+                                <th>Harakat</th>
 
                             </tr>
                             {% for leave in  allLeave %}
@@ -125,16 +125,16 @@
         }
     }).done(function(response){
         if (response == "True"){
-            alert("Leave Response Has Been Saved!")
+            alert("Qoldirish javobi saqlangan!")
             location.reload()
         }else{
-            alert("Reply Could Not Be Sent")
+            alert("Javob yuborilmadi")
         }
     }).fail(function(response){
-        alert("Error Occured. ")
+        alert("Xatolik yuz berdi. ")
     })
 }else{
-    alert("Choose valid response")
+    alert("To'g'ri javobni tanlang")
 }
 
           })

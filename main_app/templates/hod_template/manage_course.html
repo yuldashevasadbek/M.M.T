@@ -18,8 +18,8 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>Course</th>
-                                    <th>Actions</th>
+                                    <th>Sinifi</th>
+                                    <th>Harakatlar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,8 +28,8 @@
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{course.name}}</td>
                                     <td>
-                                        <a href="{% url 'edit_course' course.id %}" class="btn btn-info">Edit</a> -
-                                        <a href="{% url 'delete_course' course.id %}" onclick="return confirm('sinfni o'chirasizmi ?')" class="btn btn-danger">Delete</a>
+                                        <a href="{% url 'edit_course' course.id %}" class="btn btn-info">Tahrirlash</a> -
+                                        <a href="{% url 'delete_course' course.id %}" onclick="return confirm('sinfni o\'chirasizmi ?')" class="btn btn-danger">O'chirish</a>
                                     </td>
                                 </tr>
                                 {% endfor %}

@@ -14,15 +14,15 @@ class FormSettings(forms.ModelForm):
 
 class CustomUserForm(FormSettings):
     email = forms.EmailField(required=True)
-    gender = forms.ChoiceField(choices=[('E', 'Erkak'), ('A', 'Ayol')])
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
-    address = forms.CharField(widget=forms.Textarea)
-    password = forms.CharField(widget=forms.PasswordInput)
+    gender = forms.ChoiceField(label=("Jins"),choices=[('E', 'Erkak'), ('A', 'Ayol')])
+    first_name = forms.CharField(label=("Ism"), required=True)
+    last_name = forms.CharField(label=("Familiya"),required=True)
+    address = forms.CharField(label=("Manzil"),widget=forms.Textarea)
+    password = forms.CharField(label=("Parol"),widget=forms.PasswordInput)
     widget = {
         'password': forms.PasswordInput(),
     }
-    profile_pic = forms.ImageField()
+    profile_pic = forms.ImageField(label=("Profil rasmi"),)
 
     def __init__(self, *args, **kwargs):
         super(CustomUserForm, self).__init__(*args, **kwargs)
@@ -33,20 +33,20 @@ class CustomUserForm(FormSettings):
             for field in CustomUserForm.Meta.fields:
                 self.fields[field].initial = instance.get(field)
             if self.instance.pk is not None:
-                self.fields['password'].widget.attrs['placeholder'] = "Fill this only if you wish to update password"
+                self.fields['password'].widget.attrs['placeholder'] = "Buni faqat parolni yangilamoqchi bo'lsangiz to'ldiring"
 
     def clean_email(self, *args, **kwargs):
         formEmail = self.cleaned_data['email'].lower()
         if self.instance.pk is None:  # Insert
             if CustomUser.objects.filter(email=formEmail).exists():
                 raise forms.ValidationError(
-                    "The given email is already registered")
+                    "Berilgan elektron pochta allaqachon ro'yxatdan o'tgan")
         else:  # Update
             dbEmail = self.Meta.model.objects.get(
                 id=self.instance.pk).admin.email.lower()
             if dbEmail != formEmail:  # There has been changes
                 if CustomUser.objects.filter(email=formEmail).exists():
-                    raise forms.ValidationError("The given email is already registered")
+                    raise forms.ValidationError("Berilgan elektron pochta allaqachon ro'yxatdan o'tgan")
 
         return formEmail
 
@@ -80,13 +80,13 @@ class StaffForm(CustomUserForm):
 
     class Meta(CustomUserForm.Meta):
         model = Staff
-        fields = CustomUserForm.Meta.fields + \
-            ['course' ]
+        fields = CustomUserForm.Meta.fields
 
 
 class CourseForm(FormSettings):
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
+
 
     class Meta:
         fields = ['name']
@@ -97,6 +97,7 @@ class SubjectForm(FormSettings):
 
     def __init__(self, *args, **kwargs):
         super(SubjectForm, self).__init__(*args, **kwargs)
+
 
     class Meta:
         model = Subject
@@ -181,7 +182,7 @@ class StaffEditForm(CustomUserForm):
 class EditResultForm(FormSettings):
     session_list = Session.objects.all()
     session_year = forms.ModelChoiceField(
-        label="Session Year", queryset=session_list, required=True)
+        label="O'quv yili", queryset=session_list, required=True)
 
     def __init__(self, *args, **kwargs):
         super(EditResultForm, self).__init__(*args, **kwargs)

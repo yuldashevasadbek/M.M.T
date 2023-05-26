@@ -190,7 +190,7 @@
   <script>
       $(document).ready(function(){
         var donutData        = {
-            labels: ['Students', 'Staff'],
+            labels: ['O\'quvchi', 'Xodim'],
             datasets: [
               {
                 data:[{{total_students}}, {{total_staff}}],
@@ -219,7 +219,7 @@
       labels  : subject_list,
       datasets: [
       {
-        label               : 'Attendance Per Subject',
+        label               : 'Mavzu bo\'yicha davomat',
         backgroundColor     : '#17A2B8',
         borderColor         : 'rgba(60,141,188,0.8)',
         pointRadius          : false,
@@ -299,7 +299,7 @@
         labels  : student_name_list,
         datasets: [
           {
-            label               : 'Absent/Leave',
+            label               : 'Yo\'q / Ta\'til',
             backgroundColor     : '#b50a04',
             borderColor         : '#b50a04',
             pointRadius          : false,
@@ -310,7 +310,7 @@
             data                : student_attendance_leave_list 
           },
           {
-            label               : 'Attendance',
+            label               : 'Davomat',
             backgroundColor     : '#5a615c',
             borderColor         : 'rgba(210, 214, 222, 1)',
             pointRadius         : false,

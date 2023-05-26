@@ -14,20 +14,20 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Submit Feedback"%}
+                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Fikr-mulohaza yuborish"%}
                 </div>
                 <!-- /.card -->
 <div class="card card-dark">
     <div class="card-header"><h3 class="card-title">{{page_title}}</h3>
     </div>
-   <div class="table p-2">
+   <div class="table-responsive">
 
        <table class="table table-bordered">
            <tr>
                <th>ID</th>
-               <th>Feedback</th>
-               <th>Reply</th>
-            <th>Created At</th>
+               <th>Fikr-mulohaza</th>
+               <th>Javob</th>
+            <th>Yaratilgan</th>
         </tr>
         {% for feedback in feedbacks %}
         <tr>
@@ -36,7 +36,7 @@
               <td>
                   
                   {% if feedback.reply == "" %}
-                      <p class="badge badge-warning">No Response Yet</p>
+                      <p class="badge badge-warning">Hali javob yo'q</p>
                       {% else %}
                       {{feedback.reply}}
                   {% endif %}

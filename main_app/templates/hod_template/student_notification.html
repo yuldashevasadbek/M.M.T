@@ -13,17 +13,17 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="table-responsive">
                         <table id="example2" class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>Full Name</th>
+                                    <th>To'liq ism</th>
                                     <th>Email</th>
-                                    <th>Gender</th>
-                                    <th>Course</th>
+                                    <th>Jins</th>
+                                    <th>Sinif</th>
                                     <th>Avatar</th>
-                                    <th>Action</th>
+                                    <th>Harakat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                                             src="{{student.profile_pic}}" alt="">
                                         {% endif %}
                                     </td>
-                                    <td><button data-toggle = "modal" data-target = "#myModal"class="btn btn-primary show_notification" value="{{student.id}}">Send Notification</button> 
+                                    <td><button data-toggle = "modal" data-target = "#myModal"class="btn btn-primary show_notification" value="{{student.id}}">Bildirishnoma yuborish</button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -60,7 +60,7 @@
    <div class = "modal-dialog">
       <div class = "modal-content">
          
-         <div class = "modal-header">Send Notification
+         <div class = "modal-header">Bildirishnoma yuborish
             <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
                   &times;
             </button>
@@ -77,11 +77,11 @@
          
          <div class = "modal-footer">
             <button type = "button" class = "btn btn-danger" data-dismiss = "modal">
-               Close
+               Yopish
             </button>
             
             <button type = "button" id='send' class = "btn btn-success send_notification">
-               Send Notification
+               Bildirishnoma yuborish
             </button>
          </div>
          
@@ -112,15 +112,15 @@
            
                 
             if (response == 'True'){
-                alert("Notification Sent");
+                alert("Bildirishnoma Yuborildi");
                 location.reload();
               }else{
-                alert("Notification could not be saved. Please try again.");
+                alert("Bildirishnomani saqlab bo‘lmadi. Iltimos, yana bir bor urinib ko'ring.");
               }
                
            
         }).fail(function (response) {
-            alert("Error in saving token")
+            alert("Tokenni saqlashda xatolik yuz berdi")
         })
 
     }

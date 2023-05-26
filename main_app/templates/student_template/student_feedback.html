@@ -14,40 +14,46 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Submit Feedback"%}
+                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Fikrni yuborish"%}
                 </div>
                 <!-- /.card -->
 <div class="card card-dark">
-    <div class="card-header"><h3 class="card-title">{{page_title}}</h3>
+    <div class="card-header">
+        <h3 class="card-title">Oldingi xabarlar</h3>
     </div>
-   <div class="table p-2">
-
-       <table class="table table-bordered">
-           <tr>
-               <th>ID</th>
-               <th>Feedback</th>
-               <th>Reply</th>
-            <th>Created At</th>
-        </tr>
-        {% for feedback in feedbacks %}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{feedback.feedback}}</td>
-            <td>
-                  
-                {% if feedback.reply == "" %}
-                    <p class="badge badge-warning">No Response Yet</p>
-                    {% else %}
-                    {{feedback.reply}}
-                {% endif %}
-                    
-            </td>              <td>{{feedback.created_at}}</td>
-            </tr>
-            {% endfor %}
-        </table>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sana</th>
+                        <th>Xabar</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for leave in leave_history %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{leave.date}}</td>
+                        <td>{{leave.message}}</td>
+                        <td>
+                            {% if leave.status == 0 %}
+                            <span class="badge badge-warning">Kutilmoqda</span>
+                            {% elif leave.status == 1 %}
+                            <span class="badge badge-success">Qabul qilingan</span>
+                            {% else %}
+                            <span class="badge badge-danger">Rad etilgan</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-    </div>
-            </div>
+</div>            </div>
         </div>
     </div>
 </section>
