@@ -194,7 +194,7 @@ def staff_feedback(request):
 def staff_view_profile(request):
     staff = get_object_or_404(Staff, admin=request.user)
     form = StaffEditForm(request.POST or None, request.FILES or None,instance=staff)
-    context = {'form': form, 'page_title': 'View/Update Profile'}
+    context = {'form': form, 'page_title': 'Profilni yangilash'}
     if request.method == 'POST':
         try:
             if form.is_valid():

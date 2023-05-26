@@ -31,8 +31,8 @@ class CustomUserManager(UserManager):
 
 
 class Session(models.Model):
-    start_year = models.DateField(verbose_name = "o'quv yilini boshlanishi")
-    end_year = models.DateField(verbose_name = "o'quv yilini tugashi")
+    start_year = models.DateField(verbose_name = "Chorakni boshlanishi")
+    end_year = models.DateField(verbose_name = "Chorakni tugashi")
 
     def __str__(self):
         return "From " + str(self.start_year) + " to " + str(self.end_year)

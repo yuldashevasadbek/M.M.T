@@ -92,7 +92,7 @@ def student_apply_leave(request):
     context = {
         'form': form,
         'leave_history': LeaveReportStudent.objects.filter(student=student),
-        'page_title': 'Dam olish uchun ariza bering'
+        'page_title': 'Ketish uchun ariza bering'
     }
     if request.method == 'POST':
         if form.is_valid():

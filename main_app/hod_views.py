@@ -297,7 +297,7 @@ def edit_student(request, student_id):
     context = {
         'form': form,
         'student_id': student_id,
-        'page_title': 'Edit Student'
+        'page_title': 'O\'quvchilarni Tahrirlash'
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -346,7 +346,7 @@ def edit_course(request, course_id):
     context = {
         'form': form,
         'course_id': course_id,
-        'page_title': 'Edit Course'
+        'page_title': 'Sinfni Tahrirlash'
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -370,7 +370,7 @@ def edit_subject(request, subject_id):
     context = {
         'form': form,
         'subject_id': subject_id,
-        'page_title': 'Edit Subject'
+        'page_title': 'Fanni Tahrirlash'
     }
     if request.method == 'POST':
         if form.is_valid():
