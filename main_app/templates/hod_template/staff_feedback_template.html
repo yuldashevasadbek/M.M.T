@@ -35,8 +35,8 @@
                                             
                                     {% if feedback.reply == "" %}
                                     <td>{{feedback.created_at}}</td>
-                                    <td><span  class='badge badge-warning'>Pending Response</span></td>
-                                         <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{feedback.id}}" class="btn btn-success reply_open_modal">Reply</button>
+                                    <td><span  class='badge badge-warning'>Javob Kutilyabdi</span></td>
+                                         <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{feedback.id}}" class="btn btn-success reply_open_modal">Javob Berish</button>
                                         {% else %}
                                         <td>{{feedback.created_at}}</td>
                                         <td>{{feedback.updated_at}}</td>

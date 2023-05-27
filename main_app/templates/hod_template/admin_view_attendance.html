@@ -136,7 +136,7 @@
                     $("#attendance_block").show()  
                     $("#fetch_student_block").show()
                 }else{
-                    $("#error_attendance").html("No Attendance Date Found For Specified Data")
+                    $("#error_attendance").html("Malumot topilmadi")
                     $("#error_attendance").show()
                     $("#attendance_date").html("")
                     $("#attendance_block").hide()
@@ -145,7 +145,7 @@
 
                 }
             }).fail(function(response){
-                alert("Error While Fetching Data")
+                alert("Malumot topilmadi")
                 $("#error_attendance").html("")
                 $("#error_attendance").show()
                 $("#attendance_block").hide()
@@ -161,7 +161,7 @@
             var subject = $("#subject").val()
             $("#student_data").html(null)
 if (attendance_date.length  == 0){
-    alert("Please Choose A Date");
+    alert("Iltimos tanlang");
     $("#save_attendance").hide()
 
     return false;
@@ -177,18 +177,18 @@ if (attendance_date.length  == 0){
             }).done(function (response) {
                 var json_data = JSON.parse(response)
                 if (json_data.length < 1) {
-                    alert("No data to display")
+                    alert("malumot yuq")
 
                 } else {
 
-                    var div_data = "<hr/><div class='form-group'></div><div class='form-group'> <label>Student Attendance</label><div class='row'>"
+                    var div_data = "<hr/><div class='form-group'></div><div class='form-group'> <label>O'quvchlarning davomati</label><div class='row'>"
 
                     for (key in json_data) {
                             if (json_data[key]['status'] == 'True'){
-                                div_data += "<div class='col-lg-3 attendance_div_green'><b>"+ json_data[key]['name'] + "</b><br/>Present</div>" 
+                                div_data += "<div class='col-lg-3 attendance_div_green'><b>"+ json_data[key]['name'] + "</b><br/>Kelgan</div>"
                             }else{
         
-                                div_data += "<div class='col-lg-3 attendance_div_red'><b>"+ json_data[key]['name'] + "</b><br/>Absent</div>"
+                                div_data += "<div class='col-lg-3 attendance_div_red'><b>"+ json_data[key]['name'] + "</b><br/>Kelmagan</div>"
                             }
                         }
                        // div_data += "<div class='col-lg-3'><div class='form-check custom-control custom-checkbox'><input type='checkbox' class='custom-control-input' " + (json_data[key]['status'] ? "checked='checked'" : "")+" name='student_data[]' value=" + json_data[key]['id'] + " id='checkbox" + json_data[key]['id'] + "' /> <label for='checkbox" + json_data[key]['id'] + "' class='custom-control-label'>" + json_data[key]['name']  + (json_data[key]['status'] ? " [Present] " : " [Absent] ")+"</label></div> </div>"
@@ -196,7 +196,7 @@ if (attendance_date.length  == 0){
                     $("#student_data").html(div_data)
                 }
             }).fail(function (response) {
-                alert("Error in fetching students")
+                alert("xatolik")
             })
 
         })

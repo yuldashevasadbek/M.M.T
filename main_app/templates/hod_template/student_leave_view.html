@@ -37,11 +37,11 @@
                                  
                                       
                                       {% if leave.status == 0 %}
-                                           <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{leave.id}}" class="btn btn-success reply_open_modal">Reply</button>
+                                           <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{leave.id}}" class="btn btn-success reply_open_modal">Javob Berish</button>
 {% elif leave.status == -1 %}
-<td><span  class='badge badge-danger'>Rejected</span></td>
+<td><span  class='badge badge-danger'>Rad etilgan</span></td>
 {% else %}
-<td><span  class='badge badge-success'>Approved</span></td>
+<td><span  class='badge badge-success'>Tasdiqlangan</span></td>
 
                                             <td>{{feedback.updated_at}}</td>
                                       {% endif %}
@@ -77,20 +77,20 @@
          
          <div class = "modal-body">
              <input type="hidden"  id="id">
-           <p> Reply To <span id="reply_name"></span>'s Leave Request</p>  
+           <p> Reply To <span id="reply_name"></span>ning Surovi</p>
            <select id="reply_leave_status" class="form-control">
-<option value="">-- Select --</option>
-<option value="1">Approve</option>
-<option value="-1">Reject</option>
+<option value="">-- Tanlash --</option>
+<option value="1">Tasdiqlash</option>
+<option value="-1">Rad Etish</option>
            </select>
         </div>
         
         <div class = "modal-footer">
             <button type = "button" class = "btn btn-danger" data-dismiss = "modal">
-                Close
+                Yopish
             </button>
             
-            <button id="reply_btn" class="btn btn-success btn-block">Submit</button>
+            <button id="reply_btn" class="btn btn-success btn-block">Yuborish</button>
          
          </div>
          

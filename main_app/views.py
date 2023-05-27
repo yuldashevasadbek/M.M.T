@@ -41,6 +41,7 @@ def doLogin(request, **kwargs):
 
 
 
+
 def logout_user(request):
     if request.user != None:
         logout(request)

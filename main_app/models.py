@@ -168,8 +168,8 @@ class NotificationStudent(models.Model):
 class StudentResult(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE,verbose_name = "O'quvchi")
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE,verbose_name = "Fan")
-    test = models.FloatField(default=0)
-    exam = models.FloatField(default=0)
+    test = models.FloatField(default=0,verbose_name = "Test")
+    exam = models.FloatField(default=0,verbose_name = "Imtihon")
     created_at = models.DateTimeField(auto_now_add=True,)
     updated_at = models.DateTimeField(auto_now=True,)
 

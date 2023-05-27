@@ -231,13 +231,17 @@ def manage_course(request):
     return render(request, "hod_template/manage_course.html", context)
 
 def calendar(request):
-    return render(request,"calendar.html")
+    subjects = Subject.objects.all()
+    context = {
+        'subjects': subjects,
+    }
+    return render(request, "hod_template/calendar.html", context)
 
 def manage_subject(request):
     subjects = Subject.objects.all()
     context = {
         'subjects': subjects,
-        'page_title': 'Mavzularni Boshqarish'
+        'page_title': 'Fanlarni Boshqarish'
     }
     return render(request, "hod_template/manage_subject.html", context)
 

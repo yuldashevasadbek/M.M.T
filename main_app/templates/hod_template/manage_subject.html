@@ -25,15 +25,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for subject in subjects %}
+
                                 <tr>
+                                    {% for subject in subjects %}
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{subject.name}}</td>
                                     <td>{{subject.staff.admin}}</td>
                                     <td>{{subject.course.name}}</td>
                                     <td>
-                                        <a href="{% url 'edit_subject' subject.id %}" class="btn btn-info">Edit</a> -
-                                        <a href="{% url 'delete_subject' subject.id %}" onclick="return confirm('O'chirasizmi ?')" class="btn btn-danger">Delete</a>
+                                        <a href="{% url 'edit_subject' subject.id %}" class="btn btn-info">Tahrirlash</a> -
+                                        <a href="{% url 'delete_subject' subject.id %}" onclick="return confirm('O\'chirasizmi ?')" class="btn btn-danger">O'chirish</a>
 
                                     </td>
                                 </tr>

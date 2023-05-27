@@ -197,6 +197,18 @@
                         </p>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    {% url 'calendar' as calendar %}
+
+                <li class="nav-item">
+                    <a href="{{calendar}}"
+                        class="nav-link  {% if admin_view_attendance == request.path %} active {% endif %}">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            Dars Jadvali
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     {% url 'manage_student' as manage_student %}
                     {% url 'edit_student' student_id as edit_student %}
@@ -209,7 +221,7 @@
 
                         </p>
                     </a>
-                </li>
+
 
                 <li class="nav-item">
                     {% url 'admin_notify_staff' as admin_notify_staff %}
@@ -300,7 +312,7 @@
                 <a href="#" class="brand-link">
                     <img src="{% static 'dist/img/AdminLTELogo.png' %} " alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">Xodim Paneli</span>
+                    <span class="brand-text font-weight-light">O'qituvchi Paneli</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -430,7 +442,7 @@
 
                                 <img src="{% static 'dist/img/AdminLTELogo.png' %} " alt="AdminLTE Logo"
                                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                                <span class="brand-text font-weight-light">O'quvchi Paneli</span>
+                                <span class="brand-text font-weight-light">O'quvchi paneli</span>
                             </a>
 
                             <!-- Sidebar -->
@@ -495,6 +507,18 @@
                                                 </p>
                                             </a>
                                         </li>
+                                         <li class="nav-item">
+                    {% url 'calendar' as calendar %}
+
+                <li class="nav-item">
+                    <a href="{{calendar}}"
+                        class="nav-link  {% if admin_view_attendance == request.path %} active {% endif %}">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            Dars Jadvali
+                        </p>
+                    </a>
+                </li>
 
                                         <li class="nav-item">
                                             {% url 'student_apply_leave' as student_apply_leave %}

@@ -134,7 +134,12 @@ def student_feedback(request):
             messages.error(request, "Formada error!")
     return render(request, "student_template/student_feedback.html", context)
 
-
+def calendar(request):
+    subjects = Subject.objects.all()
+    context = {
+        'subjects': subjects,
+    }
+    return render(request, "hod_template/calendar.html", context)
 def student_view_profile(request):
     student = get_object_or_404(Student, admin=request.user)
     form = StudentEditForm(request.POST or None, request.FILES or None,

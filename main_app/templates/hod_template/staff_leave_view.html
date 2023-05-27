@@ -37,11 +37,11 @@
                                  
                                       
                                       {% if leave.status == 0 %}
-                                           <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{leave.id}}" class="btn btn-success reply_open_modal">Reply</button>
+                                           <td> <button data-toggle = "modal" data-target = "#reply_modal" value="{{leave.id}}" class="btn btn-success reply_open_modal">Javob Berish</button>
 {% elif leave.status == -1 %}
-<td><span  class='badge badge-danger'>Rejected</span></td>
+<td><span  class='badge badge-danger'>Rad etilgan</span></td>
 {% else %}
-<td><span  class='badge badge-success'>Approved</span></td>
+<td><span  class='badge badge-success'>Tasdiqlangan</span></td>
 
                                             <td>{{feedback.updated_at}}</td>
                                       {% endif %}
