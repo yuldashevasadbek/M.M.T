@@ -20,8 +20,8 @@ from main_app.EditResultView import EditResultView
 from . import hod_views, staff_views, student_views, views
 
 urlpatterns = [
+    path("calendar", views.calendar, name='calendar'),
     path("", views.login_page, name='login_page'),
-    path("calendar",hod_views.calendar,name = 'calendar'),
     path("get_attendance", views.get_attendance, name='get_attendance'),
     path("firebase-messaging-sw.js", views.showFirebaseJS, name='showFirebaseJS'),
     path("doLogin/", views.doLogin, name='user_login'),
@@ -128,8 +128,6 @@ urlpatterns = [
          name='student_fcmtoken'),
     path("student/view/notification/", student_views.student_view_notification,
          name="student_view_notification"),
-path("student/view/calendar/", student_views.calendar,
-         name="calendar"),
     path('student/view/result/', student_views.student_view_result,
          name='student_view_result'),
 

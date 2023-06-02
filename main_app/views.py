@@ -68,6 +68,9 @@ def get_attendance(request):
     except Exception as e:
         return None
 
+def calendar(request):
+
+    return render(request, "calendar.html")
 
 def showFirebaseJS(request):
     data = """
